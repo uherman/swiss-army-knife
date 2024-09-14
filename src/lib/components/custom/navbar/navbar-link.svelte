@@ -34,7 +34,7 @@
 	<div
 		use:builderActions={{ builders }}
 		{...getAttrs(builders)}
-		class="text-muted-foreground hover:text-foreground flex cursor-pointer select-none flex-row items-center"
+		class="text-muted-foreground hover:text-foreground flex w-full cursor-pointer select-none flex-row items-center"
 	>
 		<span class={cn(_class, className)}>
 			{navLink.title}
@@ -47,7 +47,7 @@
 	<div
 		use:builderActions={{ builders }}
 		{...getAttrs(builders)}
-		class="hover:text-foreground flex cursor-pointer select-none flex-row items-center"
+		class="hover:text-foreground flex w-full cursor-pointer select-none flex-row items-center"
 	>
 		<a
 			use:builderActions={{ builders }}

@@ -19,7 +19,7 @@
 </script>
 
 <header
-	class="bg-background sticky top-0 my-4 flex h-16 items-center gap-4 rounded-lg px-4 shadow-md md:px-6"
+	class="bg-background sticky top-0 my-4 flex h-16 items-center gap-4 rounded-lg px-4 md:px-6 md:shadow-md"
 >
 	<nav
 		class="hidden flex-col gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6"
@@ -43,13 +43,13 @@
 			<DropdownMenu.Content>
 				{#each ToolNavLinks as navLink}
 					<DropdownMenu.Item>
-						<NavbarLink {navLink} />
+						<NavbarLink {navLink} class="w-full" />
 					</DropdownMenu.Item>
 				{/each}
 
 				<DropdownMenu.Separator />
 				<DropdownMenu.Item>
-					<NavbarLink navLink={{ title: 'Show All', href: '/tools' }} />
+					<NavbarLink navLink={{ title: 'Show All', href: '/tools' }} class="w-full" />
 				</DropdownMenu.Item>
 			</DropdownMenu.Content>
 		</DropdownMenu.Root>

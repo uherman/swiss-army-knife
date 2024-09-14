@@ -5,7 +5,7 @@
 	import Navbar from '@/components/custom/navbar';
 </script>
 
-<main class="container">
+<main class=" md:container">
 	<ModeWatcher />
 	<Toaster position="top-center" richColors />
 	<Navbar />

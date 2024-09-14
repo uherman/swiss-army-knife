@@ -1,5 +1,6 @@
 <script lang="ts">
 	import CardSection from '@/components/custom/card-section/card-section.svelte';
+	import MainContent from '@/components/custom/layout/main-content.svelte';
 	import { Rocket } from 'lucide-svelte';
 
 	const cards = [
@@ -13,4 +14,6 @@
 	];
 </script>
 
-<CardSection {cards} />
+<MainContent>
+	<CardSection {cards} />
+</MainContent>
