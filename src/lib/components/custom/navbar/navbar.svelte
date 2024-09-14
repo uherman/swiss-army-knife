@@ -1,14 +1,15 @@
 <script lang="ts">
-	import { CircleUser, Menu, PocketKnife } from 'lucide-svelte';
+	import { CircleUser, Menu, PocketKnife, ChevronDown, ChevronsUpDown } from 'lucide-svelte';
 	import * as Sheet from '@/components/ui/sheet';
 	import * as DropdownMenu from '@/components/ui/dropdown-menu';
 	import { Button } from '@/components/ui/button';
 	import NavbarLink from './navbar-link.svelte';
-	import { NavLinks } from './constants';
+	import { ToolNavLinks } from './constants';
 	import DarkModeToggle from './dark-mode-toggle.svelte';
 	import { onNavigate } from '$app/navigation';
-	import { backIn, backInOut, backOut, bounceIn, bounceOut } from 'svelte/easing';
+	import { backIn, backOut } from 'svelte/easing';
 	import GithubLink from '../github-link/github-link.svelte';
+	import * as Collapsible from '$lib/components/ui/collapsible/index.js';
 
 	onNavigate(() => {
 		open = false;
@@ -30,9 +31,28 @@
 		</a>
 		<NavbarLink navLink={{ title: 'Home', href: '/', isRoot: true }} />
 		<NavbarLink navLink={{ title: 'About', href: '/about' }} />
-		{#each NavLinks as navLink}
-			<NavbarLink {navLink} />
-		{/each}
+		<DropdownMenu.Root>
+			<DropdownMenu.Trigger asChild let:builder>
+				<NavbarLink
+					builders={[builder]}
+					navLink={{ title: 'Tools', href: '/tools' }}
+					disabled
+					icon={ChevronDown}
+				/>
+			</DropdownMenu.Trigger>
+			<DropdownMenu.Content>
+				{#each ToolNavLinks as navLink}
+					<DropdownMenu.Item>
+						<NavbarLink {navLink} />
+					</DropdownMenu.Item>
+				{/each}
+
+				<DropdownMenu.Separator />
+				<DropdownMenu.Item>
+					<NavbarLink navLink={{ title: 'Show All', href: '/tools' }} />
+				</DropdownMenu.Item>
+			</DropdownMenu.Content>
+		</DropdownMenu.Root>
 	</nav>
 	<Sheet.Root closeOnEscape closeOnOutsideClick bind:open>
 		<Sheet.Trigger asChild let:builder>
@@ -58,20 +78,39 @@
 			}}
 			class="flex h-full flex-col items-start justify-between"
 		>
-			<nav class="grid gap-6 text-lg font-medium">
+			<nav class="grid w-full gap-6 text-lg font-medium">
 				<a href="##" class="flex items-center gap-2 text-lg font-semibold">
 					<PocketKnife class="h-6 w-6" />
 					<span class="sr-only">Swiss army knife</span>
 				</a>
 				<NavbarLink navLink={{ title: 'Home', href: '/', isRoot: true }} variant="sheet" />
 				<NavbarLink navLink={{ title: 'About', href: '/about' }} variant="sheet" />
-				{#each NavLinks as navLink}
-					<NavbarLink {navLink} variant="sheet" />
-				{/each}
+
+				<Collapsible.Root>
+					<Collapsible.Trigger asChild let:builder>
+						<NavbarLink
+							builders={[builder]}
+							navLink={{ title: 'Tools', href: '/tools' }}
+							disabled
+							icon={ChevronDown}
+						/>
+					</Collapsible.Trigger>
+					<Collapsible.Content class="bg-muted mt-3 flex w-full flex-col gap-3 rounded-lg p-4">
+						{#each ToolNavLinks as navLink}
+							<NavbarLink {navLink} variant="sheet" class="w-full text-sm" />
+						{/each}
+						<hr class="my-1 h-px border-0 bg-gray-200 dark:bg-gray-700" />
+
+						<NavbarLink
+							navLink={{ title: 'Show All', href: '/tools' }}
+							class="text-muted-foreground w-full text-sm"
+						/>
+					</Collapsible.Content>
+				</Collapsible.Root>
 			</nav>
 			<Sheet.Footer class="w-full">
 				<div class="bg-muted flex w-full flex-row items-center justify-start gap-4 rounded-lg p-3">
-					<GithubLink variant="icon" iconVariant="outline" class="h-6 w-6" />
+					<GithubLink variant="icon" iconVariant="outline" class="h-6 w-6" showHoverCard={false} />
 					<DarkModeToggle variant="button" />
 				</div>
 			</Sheet.Footer>
@@ -79,21 +118,6 @@
 	</Sheet.Root>
 	<div class="flex w-full items-center justify-end gap-4 md:ml-auto md:gap-2 lg:gap-4">
 		<DarkModeToggle />
-		<DropdownMenu.Root>
-			<DropdownMenu.Trigger asChild let:builder>
-				<Button builders={[builder]} variant="secondary" size="icon" class="rounded-full">
-					<CircleUser class="h-5 w-5" />
-					<span class="sr-only">Toggle user menu</span>
-				</Button>
-			</DropdownMenu.Trigger>
-			<DropdownMenu.Content>
-				<DropdownMenu.Label>My Account</DropdownMenu.Label>
-				<DropdownMenu.Separator />
-				<DropdownMenu.Item>Settings</DropdownMenu.Item>
-				<DropdownMenu.Item>Support</DropdownMenu.Item>
-				<DropdownMenu.Separator />
-				<DropdownMenu.Item>Logout</DropdownMenu.Item>
-			</DropdownMenu.Content>
-		</DropdownMenu.Root>
+		<GithubLink variant="icon" iconVariant="outline" class="h-6 w-6" showHoverCard={false} />
 	</div>
 </header>

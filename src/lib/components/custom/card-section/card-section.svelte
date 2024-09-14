@@ -2,19 +2,10 @@
 	import * as Card from '$lib/components/ui/card';
 	import { Button } from '@/components/ui/button';
 	import { cn } from '@/utils';
-	import type { ComponentType } from 'svelte';
-
-	type CardProps = {
-		title: string;
-		description: string;
-		href: string;
-		color: string;
-		icon: ComponentType;
-	};
-
+	import type { Tool } from '@/utils/constants';
 	let className: string = '';
 	export { className as class };
-	export let cards: CardProps[] = [];
+	export let cards: Tool[] = [];
 </script>
 
 <section
