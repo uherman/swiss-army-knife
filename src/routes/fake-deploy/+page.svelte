@@ -7,6 +7,7 @@
 	import { toast } from 'svelte-sonner';
 	import ListSpinner from '@/components/custom/list/list-spinner.svelte';
 	import ListCheckmark from '@/components/custom/list/list-checkmark.svelte';
+	import MainContent from '@/components/custom/layout/main-content.svelte';
 
 	enum DeploymentState {
 		Idle,
@@ -99,7 +100,7 @@
 		state === DeploymentState.Error;
 </script>
 
-<article class="mt-10 flex flex-row justify-center">
+<MainContent>
 	{#if deploying}
 		<div class="flex w-full flex-col items-center justify-center">
 			<h2 class="mb-2 text-lg font-semibold text-gray-900 dark:text-white">
@@ -209,4 +210,4 @@
 			</Card.Footer>
 		</Card.Root>
 	{/if}
-</article>
+</MainContent>
