@@ -6,6 +6,13 @@
 	import NavbarLink from './navbar-link.svelte';
 	import { NavLinks } from './constants';
 	import DarkModeToggle from './dark-mode-toggle.svelte';
+	import { onNavigate } from '$app/navigation';
+
+	onNavigate(() => {
+		open = false;
+	});
+
+	let open = false;
 </script>
 
 <header
@@ -23,7 +30,7 @@
 			<NavbarLink {navLink} />
 		{/each}
 	</nav>
-	<Sheet.Root>
+	<Sheet.Root closeOnEscape closeOnOutsideClick bind:open>
 		<Sheet.Trigger asChild let:builder>
 			<Button variant="outline" size="icon" class="shrink-0 md:hidden" builders={[builder]}>
 				<Menu class="h-5 w-5" />

@@ -11,7 +11,7 @@ export const NavLinks: NavLink[] = [
 		isRoot: true
 	},
 	{
-		title: 'Page1',
-		href: '/page1'
+		title: 'Info',
+		href: '/info'
 	}
 ];
