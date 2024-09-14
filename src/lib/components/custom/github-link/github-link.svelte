@@ -11,6 +11,15 @@
 	export let variant: 'text' | 'icon' = 'text';
 	export let iconVariant: 'solid' | 'outline' = 'solid';
 	export let showHoverCard = true;
+	export let rounded = true;
+	export let buttonVariant:
+		| 'default'
+		| 'secondary'
+		| 'ghost'
+		| 'outline'
+		| 'link'
+		| 'destructive'
+		| undefined = 'ghost';
 </script>
 
 <HoverCard.Root>
@@ -21,7 +30,7 @@
 		class="rounded-sm underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-8 focus-visible:outline-black"
 	>
 		{#if variant === 'icon'}
-			<Button variant="outline" size="icon" class="rounded-full">
+			<Button variant={buttonVariant} size="icon" class={`${rounded && 'rounded-full'}`}>
 				<GithubIcon class={cn('h-10 w-10', className)} variant={iconVariant} />
 			</Button>
 		{:else}

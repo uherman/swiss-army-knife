@@ -9,10 +9,18 @@
 	let checked: boolean = $mode === 'dark';
 
 	export let variant: 'button' | 'switch' = 'button';
+	export let buttonVariant:
+		| 'default'
+		| 'secondary'
+		| 'ghost'
+		| 'outline'
+		| 'link'
+		| 'destructive'
+		| undefined = 'ghost';
 </script>
 
 {#if variant === 'button'}
-	<Button on:click={toggleMode} variant="outline" size="icon" class="rounded-full">
+	<Button on:click={toggleMode} variant={buttonVariant} size="icon">
 		<Sun
 			class="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0"
 		/>

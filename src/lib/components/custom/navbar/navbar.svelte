@@ -1,7 +1,6 @@
 <script lang="ts">
-	import { CircleUser, Menu, PocketKnife, ChevronDown, ChevronsUpDown } from 'lucide-svelte';
+	import { Menu, PocketKnife, ChevronDown } from 'lucide-svelte';
 	import * as Sheet from '@/components/ui/sheet';
-	import * as DropdownMenu from '@/components/ui/dropdown-menu';
 	import { Button } from '@/components/ui/button';
 	import NavbarLink from './navbar-link.svelte';
 	import { ToolNavLinks } from './constants';
@@ -10,6 +9,8 @@
 	import { backIn, backOut } from 'svelte/easing';
 	import GithubLink from '../github-link/github-link.svelte';
 	import * as Collapsible from '$lib/components/ui/collapsible/index.js';
+	import NavbarDropdown from './navbar-dropdown/navbar-dropdown.svelte';
+	import { mode } from 'mode-watcher';
 
 	onNavigate(() => {
 		open = false;
@@ -19,7 +20,7 @@
 </script>
 
 <header
-	class="bg-background sticky top-0 my-4 flex h-16 items-center gap-4 rounded-lg px-4 md:px-6 md:shadow-md"
+	class="bg-background dark:bg-muted/80 sticky top-0 flex h-16 items-center gap-4 px-4 md:my-4 md:rounded-lg md:px-6 md:shadow-md"
 >
 	<nav
 		class="hidden flex-col gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6"
@@ -31,28 +32,7 @@
 		</a>
 		<NavbarLink navLink={{ title: 'Home', href: '/', isRoot: true }} />
 		<NavbarLink navLink={{ title: 'About', href: '/about' }} />
-		<DropdownMenu.Root>
-			<DropdownMenu.Trigger asChild let:builder>
-				<NavbarLink
-					builders={[builder]}
-					navLink={{ title: 'Tools', href: '/tools' }}
-					disabled
-					icon={ChevronDown}
-				/>
-			</DropdownMenu.Trigger>
-			<DropdownMenu.Content>
-				{#each ToolNavLinks as navLink}
-					<DropdownMenu.Item>
-						<NavbarLink {navLink} class="w-full" />
-					</DropdownMenu.Item>
-				{/each}
-
-				<DropdownMenu.Separator />
-				<DropdownMenu.Item>
-					<NavbarLink navLink={{ title: 'Show All', href: '/tools' }} class="w-full" />
-				</DropdownMenu.Item>
-			</DropdownMenu.Content>
-		</DropdownMenu.Root>
+		<NavbarDropdown />
 	</nav>
 	<Sheet.Root closeOnEscape closeOnOutsideClick bind:open>
 		<Sheet.Trigger asChild let:builder>
@@ -109,15 +89,31 @@
 				</Collapsible.Root>
 			</nav>
 			<Sheet.Footer class="w-full">
-				<div class="bg-muted flex w-full flex-row items-center justify-start gap-4 rounded-lg p-3">
-					<GithubLink variant="icon" iconVariant="outline" class="h-6 w-6" showHoverCard={false} />
-					<DarkModeToggle variant="button" />
+				<div
+					class="dark:bg-muted/80 bg-muted flex w-full flex-row items-center justify-start gap-4 rounded-lg p-3"
+				>
+					<GithubLink
+						variant="icon"
+						iconVariant="outline"
+						class="h-6 w-6"
+						showHoverCard={false}
+						rounded={false}
+						buttonVariant={$mode === 'dark' ? 'secondary' : 'outline'}
+					/>
+					<DarkModeToggle buttonVariant={$mode === 'dark' ? 'secondary' : 'outline'} />
 				</div>
 			</Sheet.Footer>
 		</Sheet.Content>
 	</Sheet.Root>
 	<div class="flex w-full items-center justify-end gap-4 md:ml-auto md:gap-2 lg:gap-4">
-		<DarkModeToggle />
-		<GithubLink variant="icon" iconVariant="outline" class="h-6 w-6" showHoverCard={false} />
+		<DarkModeToggle buttonVariant="ghost" />
+		<GithubLink
+			variant="icon"
+			iconVariant="outline"
+			class="h-6 w-6"
+			showHoverCard={false}
+			rounded={false}
+			buttonVariant="ghost"
+		/>
 	</div>
 </header>
