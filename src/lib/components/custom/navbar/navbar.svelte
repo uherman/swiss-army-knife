@@ -36,7 +36,12 @@
 	</nav>
 	<Sheet.Root closeOnEscape closeOnOutsideClick bind:open>
 		<Sheet.Trigger asChild let:builder>
-			<Button variant="outline" size="icon" class="shrink-0 md:hidden" builders={[builder]}>
+			<Button
+				variant={$mode === 'dark' ? 'secondary' : 'outline'}
+				size="icon"
+				class="shrink-0 md:hidden"
+				builders={[builder]}
+			>
 				<Menu class="h-5 w-5" />
 				<span class="sr-only">Toggle navigation menu</span>
 			</Button>
@@ -79,12 +84,6 @@
 						{#each ToolNavLinks as navLink}
 							<NavbarLink {navLink} variant="sheet" class="w-full text-sm" />
 						{/each}
-						<hr class="my-1 h-px border-0 bg-gray-200 dark:bg-gray-700" />
-
-						<NavbarLink
-							navLink={{ title: 'Show All', href: '/tools' }}
-							class="text-muted-foreground w-full text-sm"
-						/>
 					</Collapsible.Content>
 				</Collapsible.Root>
 			</nav>
