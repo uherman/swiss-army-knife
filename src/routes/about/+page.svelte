@@ -5,7 +5,7 @@
 
 <MainContent>
 	<div class=" flex items-center justify-center">
-		<div class="mx-4 rounded-lg p-8">
+		<div class="mx-2 rounded-lg p-4 md:mx-4 md:p-8">
 			<h1 class="mb-6 text-4xl font-bold">About</h1>
 			<p class="mb-6 max-w-2xl text-lg">
 				This website is a collection of tools and utilities that I've built to help me with my
