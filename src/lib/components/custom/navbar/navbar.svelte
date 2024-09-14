@@ -7,6 +7,7 @@
 	import { NavLinks } from './constants';
 	import DarkModeToggle from './dark-mode-toggle.svelte';
 	import { onNavigate } from '$app/navigation';
+	import { backIn, backInOut, backOut, bounceIn, bounceOut } from 'svelte/easing';
 
 	onNavigate(() => {
 		open = false;
@@ -37,7 +38,22 @@
 				<span class="sr-only">Toggle navigation menu</span>
 			</Button>
 		</Sheet.Trigger>
-		<Sheet.Content side="left">
+		<Sheet.Content
+			showCloseButton={false}
+			side="left"
+			inTransitionConfig={{
+				x: '-100%',
+				duration: 300,
+				opacity: 1,
+				easing: backOut
+			}}
+			outTransitionConfig={{
+				x: '-100%',
+				duration: 200,
+				opacity: 1,
+				easing: backIn
+			}}
+		>
 			<nav class="grid gap-6 text-lg font-medium">
 				<a href="##" class="flex items-center gap-2 text-lg font-semibold">
 					<PocketKnife class="h-6 w-6" />
