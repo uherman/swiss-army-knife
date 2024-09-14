@@ -6,15 +6,6 @@ export type NavLink = {
 
 export const NavLinks: NavLink[] = [
 	{
-		title: 'Home',
-		href: '/',
-		isRoot: true
-	},
-	{
-		title: 'Info',
-		href: '/info'
-	},
-	{
 		title: 'Fake Deploy',
 		href: '/fake-deploy'
 	}

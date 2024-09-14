@@ -8,6 +8,7 @@
 	import DarkModeToggle from './dark-mode-toggle.svelte';
 	import { onNavigate } from '$app/navigation';
 	import { backIn, backInOut, backOut, bounceIn, bounceOut } from 'svelte/easing';
+	import GithubLink from '../github-link/github-link.svelte';
 
 	onNavigate(() => {
 		open = false;
@@ -27,6 +28,8 @@
 
 			<span class="sr-only">Swiss army knife</span>
 		</a>
+		<NavbarLink navLink={{ title: 'Home', href: '/', isRoot: true }} />
+		<NavbarLink navLink={{ title: 'About', href: '/about' }} />
 		{#each NavLinks as navLink}
 			<NavbarLink {navLink} />
 		{/each}
@@ -53,16 +56,25 @@
 				opacity: 1,
 				easing: backIn
 			}}
+			class="flex h-full flex-col items-start justify-between"
 		>
 			<nav class="grid gap-6 text-lg font-medium">
 				<a href="##" class="flex items-center gap-2 text-lg font-semibold">
 					<PocketKnife class="h-6 w-6" />
 					<span class="sr-only">Swiss army knife</span>
 				</a>
+				<NavbarLink navLink={{ title: 'Home', href: '/', isRoot: true }} variant="sheet" />
+				<NavbarLink navLink={{ title: 'About', href: '/about' }} variant="sheet" />
 				{#each NavLinks as navLink}
 					<NavbarLink {navLink} variant="sheet" />
 				{/each}
 			</nav>
+			<Sheet.Footer class="w-full">
+				<div class="bg-muted flex w-full flex-row items-center justify-start gap-4 rounded-lg p-3">
+					<GithubLink variant="icon" iconVariant="outline" class="h-6 w-6" />
+					<DarkModeToggle variant="button" />
+				</div>
+			</Sheet.Footer>
 		</Sheet.Content>
 	</Sheet.Root>
 	<div class="flex w-full items-center justify-end gap-4 md:ml-auto md:gap-2 lg:gap-4">

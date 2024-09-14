@@ -4,10 +4,12 @@
 	import { CalendarDays, PocketKnife } from 'lucide-svelte';
 	import GithubIcon from './github-icon.svelte';
 	import { cn } from '@/utils';
+	import { Button } from '@/components/ui/button';
 
 	let className = '';
 	export { className as class };
 	export let variant: 'text' | 'icon' = 'text';
+	export let iconVariant: 'solid' | 'outline' = 'solid';
 </script>
 
 <HoverCard.Root>
@@ -18,7 +20,9 @@
 		class="rounded-sm underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-8 focus-visible:outline-black"
 	>
 		{#if variant === 'icon'}
-			<GithubIcon class={cn('h-10 w-10', className)} />
+			<Button variant="outline" size="icon" class="rounded-full">
+				<GithubIcon class={cn('h-10 w-10', className)} variant={iconVariant} />
+			</Button>
 		{:else}
 			<span class={cn(className)}>@swiss-army-knife</span>
 		{/if}
