@@ -92,7 +92,7 @@
 						variant="sheet"
 						class="text-primary"
 					/>
-					<ChevronRight class="text-primary mt-0.5 h-5 w-5 animate-pulse" />
+					<ChevronRight class="text-primary mt-1 h-5 w-5 animate-pulse" />
 				</span>
 			</nav>
 

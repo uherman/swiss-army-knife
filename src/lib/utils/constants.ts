@@ -10,15 +10,15 @@ export type Tool = {
 
 export const tools: Tool[] = [
 	{
-		title: 'Fake Deploy',
-		description: 'Simulate a fake deployment.',
-		href: '/tools/fake-deploy',
-		icon: Rocket
-	},
-	{
 		title: 'QRCode Generator',
 		description: 'Generate QR codes.',
 		href: '/tools/qr-code-generator',
 		icon: QrCode
+	},
+	{
+		title: 'Fake Deploy',
+		description: 'Simulate a fake deployment.',
+		href: '/tools/fake-deploy',
+		icon: Rocket
 	}
 ];
