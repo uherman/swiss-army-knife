@@ -4,9 +4,11 @@
 	import { cn } from '@/utils';
 	import type { Tool } from '@/utils/constants';
 
+	type Card = Tool;
+
 	let className: string = '';
 	export { className as class };
-	export let cards: Tool[] = [];
+	export let cards: Card[] = [];
 </script>
 
 <section
