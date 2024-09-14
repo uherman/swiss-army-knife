@@ -18,7 +18,7 @@
 				Open-source collaboration is at the heart of this platform. You can submit issues, suggest
 				improvements, and contribute code on <a
 					href="https://github.com/uherman/swiss-army-knife"
-					class="text-blue-500 hover:underline"
+					class="text-primary hover:underline"
 					target="_blank">GitHub</a
 				>.
 			</p>

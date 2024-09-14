@@ -25,23 +25,25 @@
 				<NavbarDropdownItem {...tool} bind:open />
 			{/each}
 		</div>
+		<!-- TODO: make components from this -->
 		<div class="bg-muted flex flex-col gap-4 px-4 pb-8 pt-6">
 			<a
 				href="/cherry"
+				on:click={() => (open = false)}
 				class="text-muted-foreground group flex flex-row items-center hover:text-current"
 			>
 				<p class="text-sm">CHERRY</p>
 				<ChevronRight class="h-3 w-3 transition group-hover:translate-x-1" />
 			</a>
-
 			<a
-				class="text-muted-foreground flex flex-row items-center gap-4 transition hover:text-current"
+				class="text-muted-foreground group flex flex-row items-center gap-4 transition hover:text-current"
 				href="/cherry"
+				on:click={() => (open = false)}
 			>
 				<div
 					class="bg-background flex w-[150px] justify-center rounded-md border px-4 py-3 font-mono text-sm"
 				>
-					<Cherry />
+					<Cherry class="group-hover:text-primary transition" />
 				</div>
 				<p class="max-w-[280px] text-xs">
 					<b>Like cherries?</b> <br /> Then you shouldcheck out the cherry ecosystem and how it can help
@@ -51,6 +53,7 @@
 			<a
 				class="text-muted-foreground flex flex-row items-center gap-4 transition hover:text-current"
 				href="/cherry"
+				on:click={() => (open = false)}
 			>
 				<div
 					class="bg-background flex w-[150px] justify-center rounded-md border px-4 py-3 font-mono text-sm"
@@ -65,6 +68,7 @@
 			<a
 				class="text-muted-foreground flex flex-row items-center gap-4 transition hover:text-current"
 				href="/cherry"
+				on:click={() => (open = false)}
 			>
 				<div
 					class="bg-background flex w-[150px] justify-center rounded-md border px-4 py-3 font-mono text-sm"

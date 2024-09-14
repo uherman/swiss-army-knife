@@ -174,7 +174,7 @@
 			{/if}
 		</div>
 	{:else}
-		<Card.Root class="w-[350px]">
+		<Card.Root class="dark:bg-muted w-[350px]">
 			<Card.Header>
 				<Card.Title>Create project</Card.Title>
 				<Card.Description>Deploy your new project in one-click.</Card.Description>
@@ -184,13 +184,18 @@
 					<div class="grid w-full items-center gap-4">
 						<div class="flex flex-col space-y-1.5">
 							<Label for="name">Name</Label>
-							<Input id="name" placeholder="Name of your project" bind:value={projectName} />
+							<Input
+								id="name"
+								placeholder="Name of your project"
+								class="text-[16px]"
+								bind:value={projectName}
+							/>
 						</div>
 						<div class="flex flex-col space-y-1.5">
 							<Label for="framework">Framework</Label>
 							<Select.Root onSelectedChange={(v) => (framework = v?.label)}>
 								<Select.Trigger id="framework" name="framework">
-									<Select.Value placeholder="Select" />
+									<Select.Value placeholder="Select" class="text-[16px]" />
 								</Select.Trigger>
 								<Select.Content>
 									{#each frameworks as framework}
