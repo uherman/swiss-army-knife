@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Menu, PocketKnife, ChevronDown } from 'lucide-svelte';
+	import { Menu, PocketKnife, ChevronDown, ChevronRight } from 'lucide-svelte';
 	import * as Sheet from '@/components/ui/sheet';
 	import { Button } from '@/components/ui/button';
 	import NavbarLink from './navbar-link.svelte';
@@ -86,10 +86,19 @@
 						{/each}
 					</Collapsible.Content>
 				</Collapsible.Root>
+				<span class="group flex w-fit flex-row items-center">
+					<NavbarLink
+						navLink={{ title: 'Cherry', href: '/cherry' }}
+						variant="sheet"
+						class="text-primary"
+					/>
+					<ChevronRight class="text-primary mt-0.5 h-5 w-5 animate-pulse" />
+				</span>
 			</nav>
+
 			<Sheet.Footer class="w-full">
 				<div
-					class="dark:bg-muted/80 bg-muted flex w-full flex-row items-center justify-start gap-4 rounded-lg p-3"
+					class="dark:bg-muted/80 bg-muted flex w-full flex-row items-center justify-between gap-4 rounded-lg p-3"
 				>
 					<GithubLink
 						variant="icon"
@@ -99,6 +108,7 @@
 						rounded={false}
 						buttonVariant={$mode === 'dark' ? 'secondary' : 'outline'}
 					/>
+					<small class="text-xs">© 2024 - Cherry</small>
 					<DarkModeToggle buttonVariant={$mode === 'dark' ? 'secondary' : 'outline'} />
 				</div>
 			</Sheet.Footer>
