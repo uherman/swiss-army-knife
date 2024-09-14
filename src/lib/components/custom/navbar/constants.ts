@@ -13,5 +13,9 @@ export const NavLinks: NavLink[] = [
 	{
 		title: 'Info',
 		href: '/info'
+	},
+	{
+		title: 'Fake Deploy',
+		href: '/fake-deploy'
 	}
 ];

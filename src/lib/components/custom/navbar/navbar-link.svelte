@@ -4,12 +4,12 @@
 
 	const classes = {
 		default: {
-			inactive: 'text-muted-foreground hover:text-foreground transition-colors',
-			active: 'text-foreground hover:text-foreground transition-colors'
+			inactive: 'text-muted-foreground hover:text-foreground transition-colors text-nowrap',
+			active: 'text-foreground hover:text-foreground transition-colors text-nowrap'
 		},
 		sheet: {
-			inactive: 'text-muted-foreground hover:text-foreground',
-			active: 'hover:text-foreground'
+			inactive: 'text-muted-foreground hover:text-foreground text-nowrap',
+			active: 'hover:text-foreground text-nowrap'
 		}
 	};
 
