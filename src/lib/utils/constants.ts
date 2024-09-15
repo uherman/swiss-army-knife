@@ -1,4 +1,4 @@
-import { QrCode, Rocket } from 'lucide-svelte';
+import { QrCode, Rocket, ScanQrCode } from 'lucide-svelte';
 import type { ComponentType } from 'svelte';
 
 export type Tool = {
@@ -10,10 +10,16 @@ export type Tool = {
 
 export const tools: Tool[] = [
 	{
-		title: 'QRCode Generator',
+		title: 'QR Code Generator',
 		description: 'Generate QR codes.',
 		href: '/tools/qr-code-generator',
 		icon: QrCode
+	},
+	{
+		title: 'Disposable QR Code',
+		description: 'Generate disposable QR codes.',
+		href: '/tools/disposable/generate',
+		icon: ScanQrCode
 	},
 	{
 		title: 'Fake Deploy',
