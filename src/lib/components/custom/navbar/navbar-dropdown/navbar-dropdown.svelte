@@ -2,10 +2,27 @@
 	import * as HoverCard from '$lib/components/ui/hover-card';
 	import { ChevronDown, ChevronRight, Cherry, Database, Wrench } from 'lucide-svelte';
 	import NavbarDropdownItem from './navbar-dropdown-item.svelte';
-	import { tools } from '@/utils/constants';
+	import type { Page } from '@/utils/constants';
+	import { dropdownOpen } from './store';
 
+	export let pages: Page[];
 	export let title = 'Tools';
+	export let offset: number = 300;
 	let open = false;
+	let hidden = false;
+
+	dropdownOpen.subscribe((value) => {
+		if (value && value !== title) {
+			hidden = true;
+		}
+	});
+
+	$: {
+		if (open) {
+			hidden = false;
+			dropdownOpen.set(title);
+		}
+	}
 </script>
 
 <HoverCard.Root openDelay={0} closeDelay={300} bind:open>
@@ -17,11 +34,11 @@
 	</HoverCard.Trigger>
 	<HoverCard.Content
 		sideOffset={15}
-		alignOffset={300}
-		class="flex w-fit flex-row overflow-hidden rounded-lg p-0"
+		alignOffset={offset}
+		class={`flex w-fit flex-row overflow-hidden rounded-lg p-0 ${hidden && 'hidden'}`}
 	>
 		<div class="flex flex-col gap-6 px-4 py-8">
-			{#each tools as tool}
+			{#each pages as tool}
 				<NavbarDropdownItem {...tool} bind:open />
 			{/each}
 		</div>

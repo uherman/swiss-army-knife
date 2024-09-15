@@ -2,9 +2,9 @@
 	import * as Card from '$lib/components/ui/card';
 	import { Button } from '@/components/ui/button';
 	import { cn } from '@/utils';
-	import type { Tool } from '@/utils/constants';
+	import type { Page } from '@/utils/constants';
 
-	type Card = Tool;
+	type Card = Page;
 
 	let className: string = '';
 	export { className as class };

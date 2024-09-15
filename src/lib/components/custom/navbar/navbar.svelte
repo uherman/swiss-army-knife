@@ -11,6 +11,7 @@
 	import * as Collapsible from '$lib/components/ui/collapsible/index.js';
 	import NavbarDropdown from './navbar-dropdown/navbar-dropdown.svelte';
 	import { mode } from 'mode-watcher';
+	import { showCasePages, tools } from '@/utils/constants';
 
 	onNavigate(() => {
 		open = false;
@@ -32,7 +33,8 @@
 		</a>
 		<NavbarLink navLink={{ title: 'Home', href: '/', isRoot: true }} />
 		<NavbarLink navLink={{ title: 'About', href: '/about' }} />
-		<NavbarDropdown />
+		<NavbarDropdown pages={tools} />
+		<NavbarDropdown pages={showCasePages} title="Showcase" offset={240} />
 	</nav>
 	<Sheet.Root closeOnEscape closeOnOutsideClick bind:open>
 		<Sheet.Trigger asChild let:builder>

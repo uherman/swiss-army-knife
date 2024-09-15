@@ -1,14 +1,14 @@
-import { QrCode, Rocket, ScanQrCode } from 'lucide-svelte';
+import { QrCode, Rocket, ScanQrCode, Newspaper } from 'lucide-svelte';
 import type { ComponentType } from 'svelte';
 
-export type Tool = {
+export type Page = {
 	title: string;
 	description: string;
 	href: string;
 	icon: ComponentType;
 };
 
-export const tools: Tool[] = [
+export const tools: Page[] = [
 	{
 		title: 'QR Code Generator',
 		description: 'Generate QR codes.',
@@ -26,5 +26,14 @@ export const tools: Tool[] = [
 		description: 'Simulate a fake deployment.',
 		href: '/tools/fake-deploy',
 		icon: Rocket
+	}
+];
+
+export const showCasePages: Page[] = [
+	{
+		title: 'Feed',
+		description: 'A feed of posts.',
+		href: '/showcase/feed',
+		icon: Newspaper
 	}
 ];
