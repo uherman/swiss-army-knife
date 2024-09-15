@@ -8,7 +8,6 @@ export const actions = {
 
 		const qrData = data.get('data') as string;
 		const isRedirect = data.get('redirect') === 'on';
-		console.log(data.get('redirect'));
 		if (!qrData) {
 			return error(400, 'No data provided');
 		}
